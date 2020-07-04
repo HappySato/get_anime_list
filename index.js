@@ -1,6 +1,9 @@
 const axiosBase = require('axios');
+
+//ShangriLa Anime API V1
+//https://qiita.com/AKB428/items/64938febfd4dcf6ea698
 const axios = axiosBase.create({
-  baseURL: 'http://api.moemoe.tokyo', // バックエンドB のURL:port を指定する
+  baseURL: 'http://api.moemoe.tokyo',
   headers: {
     'Content-Type': 'application/json',
     'X-Requested-With': 'XMLHttpRequest'
@@ -8,6 +11,7 @@ const axios = axiosBase.create({
   responseType: 'json'  
 });
 
+//2020年第3クールを取得する場合
 axios.get('/anime/v1/master/2020/3')
   .then(function(response) {
     let title_list = [];
@@ -18,7 +22,7 @@ axios.get('/anime/v1/master/2020/3')
     console.log(title_list.join('|'));
   })
   .catch(function(error) {
-    console.log('ERROR!! occurred in Backend:' + error);
+    console.log('ERROR!!: ' + error);
   });
 
 function escape(w) {
